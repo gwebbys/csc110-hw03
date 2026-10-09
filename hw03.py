@@ -60,22 +60,24 @@ def pick_averaging_method():
     'Error in pick_averaging_method: incorrect option picked'.
     """
     #getting a string input from user
-    average = input("Pick 'a' for mean, 'b' for median, 'c' for mode: ")
+    averagemethod = input("Pick 'a' for mean, 'b' for median, 'c' for mode: ")
     
     #if user chose a, we find the mean from our grades list we made in Task 1
-    if average == "a":
+    if averagemethod == "a":
         print("picked: Mean")
         avg = statistics.mean(grades)
         return avg
     
     #if user chose b, we find the median from our grades list in Task 1
-    elif average == "b":
+    # I use elif instead of if for b and c because it is not worth checking them if we know we are only using one of them
+    elif averagemethod == "b":
         print("picked: Median")
         avg = statistics.median(grades)
         return avg
     
     #if user chose c, we find the mode from our grades list in Task 1
-    elif average == "c":
+
+    elif averagemethod == "c":
         print("picked: Mode")
         avg = statistics.mode(grades)
         return avg
@@ -83,7 +85,6 @@ def pick_averaging_method():
     else:
         print("Error in pick_averaging_method: incorrect option picked")
         exit()
-    
     
 
 # Task 3:
@@ -97,7 +98,21 @@ def pick_visualization(average):
     Any other input prints
     'Error in pick_visualization: incorrect option picked'.
     """
-    pass
+    # asks user to pick 1 or 2
+    userchoice = input("Pick '1' for print average, or '2' for plot average: ")
+    
+    # if user chose 1, then we call the function defined below
+    if userchoice == "1":
+        print_list_and_average(average)
+        
+    # if the user chose 2, then we call the function define below
+    # we use elif to avoid going through every what if
+    elif userchoice == "2":
+        plot_grades(average)
+        
+    else:
+        print("Error in pick_visualization: incorrect option picked")
+        exit()
 
 
 # ---------------------------------------
